@@ -11,16 +11,14 @@
  */
 
 const reverseList = (head) => {
-  if (!head) {
-    return null;
-  }
+  let prev = null;
+  let curr = head;
 
-  let newHead = head;
-  if (head.next) {
-    newHead = this.reverseList(head.next);
-    head.next.next = head;
+  while (curr) {
+    let temp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = temp;
   }
-  head.next = null;
-
-  return newHead;
+  return prev;
 };
